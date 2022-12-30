@@ -15,7 +15,7 @@ def parse_to_integer(data):
     >>> str 
     >>> 25
     """ 
-    return int(data)
+ 
 
 def parse_to_float(data):
     """
@@ -34,11 +34,10 @@ def parse_to_float(data):
     >>> str
     >>> 25.0
     """ 
-    return float(data)
+   
 
 def parse_to_string(number):
     """
     do the same thing we did above 
     """
-    return str(number)
 
