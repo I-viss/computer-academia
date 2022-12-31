@@ -1,6 +1,5 @@
 import unittest
 import parsers
-import math 
 
 class TestIntegerParser(unittest.TestCase):
 
@@ -43,7 +42,7 @@ class TestStringParser(unittest.TestCase):
         result = parsers.parse_to_string(12.0)
         self.assertEqual(result, '12.0')
         self.assertTrue(isinstance(result, str))
-        self.assertFalse(isinstance(result, float))
+        self.assertFalse(isinstance(result, float)) 
 
 
 if __name__ == "__main__":
