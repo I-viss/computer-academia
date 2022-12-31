@@ -32,7 +32,10 @@
 ## Third week 
 #### Final Project
 
-# python tutorial link Youtube
+## Python resources to learn
+##### https://www.w3schools.com/python/default.asp
+
+## python tutorial link Youtube
 ##### https://www.youtube.com/watch?v=Ozrduu2W9B8&list=PL4cUxeGkcC9idu6GZ8EU_5B6WpKTdYZbK
 
 ## github tutorial 
@@ -46,3 +49,6 @@
 
 ## Where to download Python 
 ##### https://www.python.org/downloads/
+
+## Where to download git
+##### https://git-scm.com/downloads
