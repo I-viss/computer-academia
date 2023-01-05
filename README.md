@@ -53,5 +53,8 @@
 ## Where to download git
 ##### https://git-scm.com/downloads
 
-## Setting an ssh key to github
+## Setting ssh key to github
 ##### https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+
+### meeting
+##### https://meet.google.com/ois-mpxy-qpz
