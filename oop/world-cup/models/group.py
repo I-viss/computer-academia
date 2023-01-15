@@ -1,7 +1,5 @@
 import random
 
-
-
 class Group:
 
     def __init__(self, name):
@@ -25,12 +23,11 @@ class Group:
             temp.remove(team)
             for t in temp:
                 team.play(t)
-        print('\n')
+        
+        self.teams = sorted(self.teams, reverse=True)
+        self.display()
 
-        return self.teams
-
-    def results(self):
-        self.teams = sorted(self.elimination_process(), reverse=True)
+    def display(self):
         print("---- results of group {0} after elimination 32 stage----".format(self.name))
         print(self)
 

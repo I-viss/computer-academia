@@ -20,7 +20,7 @@ data = generator.generate()
 
 
 for group in data:
-    group.results()
+    group.elimination_process()
 
 round16 = Round16(data)
 round16.build()
