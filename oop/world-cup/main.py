@@ -1,56 +1,40 @@
-import models 
 import data
-import random
-
+from models.group import GroupGenerator 
+from models.team import Team
+from models.sFinal import sFinal
+from models.qFinal import qFinal
+from models.final import Final
+from models.round16 import Round16
 
 def create_teams(teams_data):
     data = []
     for team in teams_data:
-        new_team = models.Team(team)
+        new_team = Team(team)
         data.append(new_team)
 
     return data 
 
-def split_teams(teams):
-    next = 4 
-    prev = 0
-    temp = []
-    while next < 32:
-        temp.append(teams[prev:next])
-        prev = next
-        next += 4
 
-    return temp 
+generator = GroupGenerator(create_teams(data.teams))
+data = generator.generate()
 
-def generate_groups(teams):
-    groups = []
-    names = ['A', 'F', 'K', 'B', 'R', 'T', 'H', 'L']
-    for team_array in teams:
-        name = random.choice(names)
-        names.remove(name)
-        group = models.Group(name)
-        for team in team_array:
-            group.add(team)
-        groups.append(group)
-                
-    return groups
-    
-
-def match_simulation(group):
-    temp = group.teams.copy()
-    for team in group.teams:
-        temp.remove(team)
-        for t in temp:
-            team.play(t)
-        
-    return group 
-
-
-data = generate_groups(split_teams(create_teams(data.teams)))
 
 for group in data:
-    group.elimination_process()
+    group.results()
 
-for group in data:
-    print(group)
+round16 = Round16(data)
+round16.build()
+round16.elimination_process()
+
+qfinal = qFinal(round16.teams)
+qfinal.build()
+qfinal.elimination_process()
+
+sfinal = sFinal(qfinal.teams)
+sfinal.build()
+sfinal.elimination_process()
+
+final = Final(sfinal.teams)
+final.build()
+final.elimination_process()
 
