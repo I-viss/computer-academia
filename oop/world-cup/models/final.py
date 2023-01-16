@@ -1,8 +1,10 @@
-class Final:
+from models import BaseModel
+
+class Final(BaseModel):
 
     def __init__(self, groups=None):
-        self.groups = groups
-        self.teams = []
+        super().__init__(groups)
+        self.stage_name = "Final"
 
     def build(self):
         if self.groups is None:

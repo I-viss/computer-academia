@@ -1,40 +1,40 @@
 import data
 from models.group import GroupGenerator 
-from models.team import Team
-from models.sFinal import sFinal
-from models.qFinal import qFinal
-from models.final import Final
-from models.round16 import Round16
+from models.team import AutomatedPlayingTeam, ManualPlayingTeam
+from models.worlcup import WorlCupModel
 
-def create_teams(teams_data):
+def create_automated_teams(teams_data):
     data = []
     for team in teams_data:
-        new_team = Team(team)
+        new_team = AutomatedPlayingTeam(team)
         data.append(new_team)
 
     return data 
 
+def create_manual_teams(teams_data):
+    data = []
+    for team in teams_data:
+        new_team = ManualPlayingTeam(team)
+        data.append(new_team)
 
-generator = GroupGenerator(create_teams(data.teams))
-data = generator.generate()
+    return data 
 
+if __name__ == "__main__":
 
-for group in data:
-    group.elimination_process()
+    print("Welcome to World Cup\n1.Manual World Cup\n2.Automated World Cup\n0.To exit the program")
+    res = int(input('Enter your choice: '))
 
-round16 = Round16(data)
-round16.build()
-round16.elimination_process()
+    if res == 1:
+        generator = GroupGenerator(create_manual_teams(data.teams))
+        groups = generator.generate()
+        world_cup = WorlCupModel(groups)
+        world_cup.play()
 
-qfinal = qFinal(round16.teams)
-qfinal.build()
-qfinal.elimination_process()
+    elif res == 2:
+        generator = GroupGenerator(create_automated_teams(data.teams))
+        groups = generator.generate()
+        world_cup = WorlCupModel(groups)
+        world_cup.play()
 
-sfinal = sFinal(qfinal.teams)
-sfinal.build()
-sfinal.elimination_process()
-
-final = Final(sfinal.teams)
-final.build()
-final.elimination_process()
-
+    else:
+        exit()
